@@ -4,7 +4,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        checkout([$class: 'GitSCM', branches: [[name: '*/branchname']],
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']],
           userRemoteConfigs: [[credentialsId: 'GitHub_token', url: 'https://github.com/CatanaA/snyk-goof.git']]])
           sh "ls -lart ./*"
             }
