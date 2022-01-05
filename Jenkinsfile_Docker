@@ -12,7 +12,7 @@ pipeline {
     
      stage('Docker Scan'){
       steps{
-        withCredentials(bindings: [string(credentialsId:'Alexandra_Snyk_token', tokenVar:'Snyk_tk')]){
+        withCredentials(bindings: ['Snyk API token'(credentialsId:'Alexandra_Snyk_token', variable:'Snyk_tk')]){
         script{
           sh "SNYK_TOKEN=${Snyk_tk} snyk test --docker node:6-stretch --file=Dockerfile"
           sh "SNYK_TOKEN=${Snyk_tk} snyk monitor --docker node:6-stretch"
