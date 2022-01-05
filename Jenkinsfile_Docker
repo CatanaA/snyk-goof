@@ -10,24 +10,24 @@ pipeline {
             }
           }
     
-     stage('Docker Scan'){
+  //    stage('Docker Scan'){
+  //     steps{
+  //       withCredentials(bindings: ['Snyk API token'(credentialsId:'Alexandra_Snyk_token', variable:'Snyk_tk')]){
+  //       script{
+  //         sh "SNYK_TOKEN=${Snyk_tk} snyk test --docker node:6-stretch --file=Dockerfile"
+  //         sh "SNYK_TOKEN=${Snyk_tk} snyk monitor --docker node:6-stretch"
+  //       }
+  //     }
+  //   }
+  // } 
+    stage('Docker Compose'){
       steps{
-        withCredentials(bindings: ['Snyk API token'(credentialsId:'Alexandra_Snyk_token', variable:'Snyk_tk')]){
         script{
-          sh "SNYK_TOKEN=${Snyk_tk} snyk test --docker node:6-stretch --file=Dockerfile"
-          sh "SNYK_TOKEN=${Snyk_tk} snyk monitor --docker node:6-stretch"
+          sh "sudo docker-compose up --build"
+          sh "sleep 5"
+          sh "docker-compose down"
         }
       }
     }
-  } 
-    // stage('Docker Compose'){
-    //   steps{
-    //     script{
-    //       sh "sudo docker-compose up --build"
-    //       sh "sleep 5"
-    //       sh "docker-compose down"
-    //     }
-    //   }
-    // }
   }
 }
