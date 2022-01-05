@@ -21,8 +21,9 @@ pipeline {
     stage('Docker Build'){
       steps{
         script{
-          sh "docker-compose up --build"
-          //sh "docker-compose down"
+          sh "sudo docker-compose up --build"
+          sh "sleep 5"
+          sh "docker-compose down"
         }
       }
     }
