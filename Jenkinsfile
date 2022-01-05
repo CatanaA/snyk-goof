@@ -13,7 +13,7 @@ pipeline {
     stage('Build') {
       steps {
         println "Starting Snyk"
-        sh 'npm install -g' 
+        sh 'sudo npm install -g' 
         snykSecurity(snykTokenId: 'Alexandra_Snyk_token', snykInstallation: 'Snyk_test')
             
       }
