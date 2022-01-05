@@ -13,8 +13,9 @@ pipeline {
     stage('Build') {
       steps {
         println "Starting Snyk"
+        sh 'npm install -g' 
         snykSecurity(snykTokenId: 'Alexandra_Snyk_token', snykInstallation: 'Snyk_test')
-         // sh 'npm install -g'   
+            
       }
     }
     stage('Docker Build'){
