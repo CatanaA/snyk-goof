@@ -10,14 +10,14 @@ pipeline {
             }
           }
 
-    stage('Build') {
-      steps {
-        println "Starting Snyk"
-        sh 'sudo npm install -g' 
-        snykSecurity(snykTokenId: 'Alexandra_Snyk_token', snykInstallation: 'Snyk_test')
+    // stage('Build') {
+    //   steps {
+    //     println "Starting Snyk"
+    //     sh 'sudo npm install -g' 
+    //     snykSecurity(snykTokenId: 'Alexandra_Snyk_token', snykInstallation: 'Snyk_test')
             
-      }
-    }
+    //   }
+    // }
     stage('Docker Build'){
       steps{
         script{
